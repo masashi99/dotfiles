@@ -1,0 +1,68 @@
+{
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5",
+  "schemes" : [
+    {
+      "if" : {
+        "device" : {
+          "serialNumber" : "pqrs.org:Karabiner-DriverKit-VirtualHIDPointing",
+          "category" : "mouse",
+          "productName" : "Karabiner DriverKit VirtualHIDPointing 1.7.0",
+          "vendorID" : "0x16c0",
+          "productID" : "0x27da"
+        }
+      },
+      "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "distance" : {
+          "vertical" : 3
+        },
+        "modifiers" : {
+          "vertical" : {
+            "control" : {
+              "type" : "preventDefault"
+            },
+            "shift" : {
+              "type" : "alterOrientation"
+            },
+            "command" : {
+              "type" : "zoom"
+            }
+          }
+        },
+        "speed" : {
+          "vertical" : 0
+        }
+      },
+      "pointer" : {
+        "acceleration" : 2.9852,
+        "disableAcceleration" : false,
+        "speed" : 0.0689655172413792768
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "serialNumber" : "376F6FA6",
+          "vendorID" : "0x46d",
+          "productID" : "0xb03e",
+          "category" : "mouse",
+          "productName" : "MX Ergo S"
+        }
+      },
+      "scrolling" : {
+        "modifiers" : {
+          "vertical" : {
+            "command" : {
+              "type" : "zoom"
+            },
+            "option" : {
+              "type" : "preventDefault"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
