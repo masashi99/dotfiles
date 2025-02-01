@@ -4,7 +4,7 @@ import = [
 ]
 
 [window]
-dimensions = { columns = 100, lines = 25 }
+dimensions = { columns = 120, lines = 30 }
 padding = { x = 4, y = 2 }
 opacity = 0.85
 option_as_alt = "Both"
@@ -22,9 +22,10 @@ italic = { family = "Hack Nerd Font", style="Italic" }
 bold_italic = { family = "Hack Nerd Font", style="Bold Italic" }
 
 [terminal]
-shell = { program = "/bin/zsh", args = ["-l", "-c", "zellij attach --index 0 --create"]}
+shell = { program = "/bin/zsh", args = ["-l", "-c", "zellij"]}
 
 [keyboard]
 bindings = [
-    { key = "t", mods = "Command", action = "None"}
+    { key = "Tab", mods = "Control", action = "SelectNextTab" },
+    { key = "Tab", mods = "Control|Shift", action = "SelectPreviousTab" }
 ]

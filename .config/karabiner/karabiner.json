@@ -5,20 +5,14 @@
                 "parameters": { "basic.to_if_alone_timeout_milliseconds": 10000 },
                 "rules": [
                     {
-                        "description": "right_shiftを単打でbackspaceへ変換",
-                        "enabled": false,
+                        "description": "right_shiftをdeleteへ変換",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "right_shift",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["left_option"]
-                                    }
-                                ],
+                                "to": [{ "key_code": "delete_forward" }],
                                 "type": "basic"
                             }
                         ]
@@ -325,23 +319,6 @@
                     {
                         "description": "03_commandコンビネーション",
                         "manipulators": [
-                            {
-                                "description": "command+tabをタブ切り替え(control+tab)へ変換",
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "tab",
-                                        "modifiers": ["control"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
                             {
                                 "description": "command+back_quoteをEscへ変換",
                                 "from": {
