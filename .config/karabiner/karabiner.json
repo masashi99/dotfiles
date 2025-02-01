@@ -64,6 +64,15 @@
                                 },
                                 "to": [{ "key_code": "left_command" }],
                                 "type": "basic"
+                            },
+                            {
+                                "description": "fnをcontrolへ変換",
+                                "from": {
+                                    "apple_vendor_top_case_key_code": "keyboard_fn",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_control" }],
+                                "type": "basic"
                             }
                         ]
                     },
