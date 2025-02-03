@@ -11,6 +11,7 @@ fdr() {
     cd "$(ghq root)/$selected"
   fi
 }
+bindkey -s '^z' 'fdr\n'
 
 # リポジトリ内のディレクトリ検索
 fdd() {
@@ -30,6 +31,7 @@ fdd() {
   [ -z "$dir" ] && return
   cd "$top_dir/$dir"
 }
+bindkey -s '^x' 'fdd\n'
 
 # リポジトリ作成
 ghcr() {
