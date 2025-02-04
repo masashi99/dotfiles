@@ -1,3 +1,6 @@
+# asdf読み込み
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
 # k8s補完
 autoload -Uz compinit
 compinit
