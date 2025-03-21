@@ -234,9 +234,15 @@
                                         "name": "spaceFlg",
                                         "type": "variable_if",
                                         "value": true
+                                    },
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "command+space+jで上移動(up_arrow)",
+                                "description": "command+space+iで上移動(up_arrow)",
                                 "from": {
                                     "key_code": "i",
                                     "modifiers": {
@@ -253,6 +259,12 @@
                                         "name": "spaceFlg",
                                         "type": "variable_if",
                                         "value": true
+                                    },
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
                                 "description": "command+space+kで下移動(down_arrow)",

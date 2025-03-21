@@ -161,18 +161,17 @@ keybinds {
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
-        bind "Ctrl Left" { MoveFocusOrTab "Left"; }
-        bind "Ctrl Right" { MoveFocusOrTab "Right"; }
-        bind "Ctrl Down" { MoveFocus "Down"; }
-        bind "Ctrl Up" { MoveFocus "Up"; }
+        bind "Ctrl [" { MoveFocusOrTab "Left"; }
+        bind "Ctrl ]" { MoveFocusOrTab "Right"; }
+        bind "Ctrl i" { MoveFocus "Up"; }
+        bind "Ctrl k" { MoveFocus "Down"; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt n" { NewPane; }
+        bind "Alt v" { NewPane "Right"; }
+        bind "Alt h" { NewPane "Down"; }
         bind "Alt t" { NewTab; }
         bind "Alt x" { CloseFocus; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
-        bind "Alt [" { MoveTab "Left"; }
-        bind "Alt ]" { MoveTab "Right"; }
         bind "Alt d" { Detach; }
         bind "Alt m" {
             LaunchOrFocusPlugin "session-manager" {
@@ -316,13 +315,13 @@ load_plugins {
 // Choose the theme that is specified in the themes section.
 // Default: default
 //
-// theme "default"
+theme "nightfox"
 
 // The name of the default layout to load on startup
 // Default: "default"
 // (Requires restart)
 //
-// default_layout "compact"
+default_layout "compact"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal

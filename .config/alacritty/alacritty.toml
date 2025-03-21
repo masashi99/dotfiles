@@ -25,7 +25,15 @@ size = 12.0
 shell = {program = "/bin/zsh", args = ["-l", "-c", "zellij"]}
 
 [keyboard]
+# see https://zenn.dev/cp_r/articles/01469ecbd1a5ac
 bindings = [
-  {key = "Tab", mods = "Control", action = "SelectNextTab"},
-  {key = "Tab", mods = "Control|Shift", action = "SelectPreviousTab"},
+  {key = "\\", mods = "Command", chars = "\u001b[118;3u"}, # alt+v
+  {key = "|", mods = "Command|Shift", chars = "\u001b[104;3u"}, # alt+h
+  {key = "t", mods = "Command", chars = "\u001b[116;3u"}, # alt+h
+  {key = "w", mods = "Command", chars = "\u001b[120;3u"}, # alt+x
+  {key = "m", mods = "Command", chars = "\u001b[109;3u"}, # alt+m
+  {key = "Tab", mods = "Control", chars = "\u001b[91;5u"}, # ctrl+[
+  {key = "Tab", mods = "Control|Shift", chars = "\u001b[93;5u"}, # ctrl+]
+  {key = "ArrowUp", mods = "Command", chars = "\u001b[73;5u"}, # ctrl+u
+  {key = "ArrowDown", mods = "Command", chars = "\u001b[75;5u"}, # ctrl+d
 ]
