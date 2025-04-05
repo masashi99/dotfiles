@@ -4,10 +4,11 @@ import = [
 ]
 
 [window]
-dimensions = {columns = 120, lines = 30}
-opacity = 0.725
+# dimensions = {columns = 120, lines = 30}
+opacity = 0.8
 option_as_alt = "Both"
 padding = {x = 4, y = 2}
+startup_mode = "Maximized"
 
 [scrolling]
 history = 100000
@@ -34,6 +35,10 @@ bindings = [
   {key = "m", mods = "Command", chars = "\u001b[109;3u"}, # alt+m
   {key = "Tab", mods = "Control", chars = "\u001b[91;5u"}, # ctrl+[
   {key = "Tab", mods = "Control|Shift", chars = "\u001b[93;5u"}, # ctrl+]
-  {key = "ArrowUp", mods = "Command", chars = "\u001b[73;5u"}, # ctrl+u
-  {key = "ArrowDown", mods = "Command", chars = "\u001b[75;5u"}, # ctrl+d
+  {key = "ArrowUp", mods = "Command|Shift", chars = "\u001b[105;5u"}, # ctrl+i
+  {key = "ArrowDown", mods = "Command|Shift", chars = "\u001b[107;5u"}, # ctrl+k
+  {key = "ArrowLeft", mods = "Alt|Shift", chars = "\u001b[106;5u"}, # ctrl+j
+  {key = "ArrowRight", mods = "Alt|Shift", chars = "\u001b[108;5u"}, # ctrl+l
+  {key = "ArrowRight", mods = "Alt", chars = "\u001BF"}, # option+right
+  {key = "ArrowLeft",  mods = "Alt", chars = "\u001BB"} # option+left
 ]
