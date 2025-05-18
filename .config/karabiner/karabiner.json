@@ -747,6 +747,38 @@
                                 },
                                 "to": [{ "key_code": "delete_forward" }],
                                 "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+dでF15(vscodeのリマップ)",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f15" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+dでF16(vscodeのリマップ)",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f16" }],
+                                "type": "basic"
                             }
                         ]
                     },
