@@ -845,7 +845,6 @@
                 }
             ],
             "name": "MyKeyConfig",
-            "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
@@ -1388,6 +1387,522 @@
                 }
             ],
             "name": "HHKB",
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        },
+        {
+            "complex_modifications": {
+                "parameters": { "basic.to_if_alone_timeout_milliseconds": 10000 },
+                "rules": [
+                    {
+                        "description": "right_commandを単打でIME ONへ変換",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 1000000 },
+                                "to": [{ "key_code": "right_command" }],
+                                "to_if_alone": [{ "key_code": "japanese_kana" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "left_command単打でIME OFFへ変換",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 1000000 },
+                                "to": [{ "key_code": "right_command" }],
+                                "to_if_alone": [{ "key_code": "japanese_eisuu" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "caps_lock",
+                        "manipulators": [
+                            {
+                                "description": "caps_lockをright_controlへ変換、単打でESC",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 1000000 },
+                                "to": [{ "key_code": "right_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "right_control+spaceをcommand+spaceに変換(raycast用)",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "description": "right_control+spaceをcommand+spaceに変換(raycast用)",
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["right_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "spaceホールド",
+                        "manipulators": [
+                            {
+                                "description": "spaceホールド中にspaceFlgをtrueにする(単打はspaceとして出力)",
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 1000000 },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "key_up_value": false,
+                                            "name": "spaceFlg",
+                                            "value": true
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "spacebar" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "01_control移動",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+hで単語単位の左移動",
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": ["option"]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+lで単語単位の右移動",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": ["option"]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+jで下移動",
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": { "key_code": "down_arrow" },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+kで単語単位の右移動",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": { "key_code": "up_arrow" },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "02_optionカーソル(window用)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "option+space+hでoption+control+left_arrow",
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "left_arrow",
+                                    "modifiers": ["option", "control"]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+lでcontrol+option+right_arrow",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "right_arrow",
+                                    "modifiers": ["option", "control"]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+jでcontrol+option+down_arrow",
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "down_arrow",
+                                    "modifiers": ["option", "control"]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "control+space+kでcontrol+option+up_arrow",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": {
+                                    "key_code": "up_arrow",
+                                    "modifiers": ["option", "control"]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "03_space移動",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+hで左移動",
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+jで下移動",
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+kで上移動",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+lで右移動",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+0で行頭移動(cntrol+a)",
+                                "from": {
+                                    "key_code": "0",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+0で行頭移動(cntrol+a)",
+                                "from": {
+                                    "key_code": "0",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+^で行頭移動(cntrol+e)",
+                                "from": {
+                                    "key_code": "6",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "a",
+                                        "modifiers": ["control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+wで単語単位の右移動(option+right_arrow)",
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "spaceFlg",
+                                        "type": "variable_if",
+                                        "value": true
+                                    }
+                                ],
+                                "description": "space+bで単語単位の左移動(option+left_arrow)",
+                                "from": {
+                                    "key_code": "b",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "command+y でredo(command+shift+z)",
+                        "manipulators": [
+                            {
+                                "description": "command+y でredo(command+shift+z)",
+                                "from": {
+                                    "key_code": "y",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": ["command", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "command-qの実行を0.5秒間長遅延",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "parameters": { "basic.to_if_held_down_threshold_milliseconds": 500 },
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": ["command"],
+                                        "repeat": false
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 45085,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_vertical_wheel": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 52947,
+                        "vendor_id": 7848
+                    },
+                    "ignore": false
+                }
+            ],
+            "name": "vim",
+            "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         },
         {
