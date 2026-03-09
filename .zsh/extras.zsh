@@ -65,3 +65,5 @@ ghcr() {
     return 1
   fi
 }
+
+eval "$(starship init zsh)"
