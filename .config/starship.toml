@@ -17,26 +17,11 @@ $time
 # コマンドラインに1行分のスペースを入れる
 add_newline = true
 
-[username]
-style_user = "white bold"
-style_root = "black bold"
-format = "user: [$user]($style) "
-disabled = false
-
-
-# left_promptとright_promptの間を何で埋めるか設定
-[fill]
-symbol = ' '
-
 [directory]
 style = "fg:#2E3440 bg:#88C0D0 bold"
-# format = "[ $path ]($style)"
 truncation_length = 10
-truncate_to_repo = false
-truncation_symbol = "…/"
-# truncation_symbol = ' ' # nf-fa-folder_open
-# truncate_to_repo = false
-# style = 'fg:#7aa2f7 bg:#1a1b26'
+truncate_to_repo = true
+truncation_symbol = ' ' # nf-fa-folder_open
 read_only = ' 󰌾 ' # nf-md-lock
 read_only_style = 'fg:#f7768e bg:#1a1b26'
 format = '[ $path ]($style)[$read_only]($read_only_style)'
@@ -47,11 +32,6 @@ format = '[ $path ]($style)[$read_only]($read_only_style)'
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
-
-[aws]
-disabled = true
-[gcloud]
-disabled = true
 
 [git_branch]
 symbol = ""
@@ -70,7 +50,6 @@ format = "[$duration]($style)" # nf-pl-right_soft_divider, nf-mdi-clock
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-# style = "bg:#1d2230"
 format = '[[   $time ](fg:#a0a9cb)]($style)'
 
 [character]
