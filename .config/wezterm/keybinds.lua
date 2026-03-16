@@ -14,7 +14,22 @@ return {
     { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
     { key = 't', mods = 'SUPER', action = act.SpawnTab 'CurrentPaneDomain' },
     { key = 'v', mods = 'SUPER', action = act.PasteFrom('Clipboard') },
-    { key = 'w', mods = 'SUPER', action = act.CloseCurrentPane{ confirm = false } },
+    { key = 'w', mods = 'SUPER', action = wezterm.action_callback(function(window, pane)
+      local mux_window = window:mux_window()
+      if not mux_window then
+        return
+      end
+
+      local tabs = mux_window:tabs()
+      if #tabs == 1 then
+        local panes = tabs[1]:panes()
+        if #panes == 1 then
+          return
+        end
+      end
+
+      window:perform_action(act.CloseCurrentPane{ confirm = false }, pane)
+    end) },
     { key = 'x', mods = 'SHIFT|CTRL', action = act.ActivateCopyMode },
     { key = 'z', mods = 'SHIFT|CTRL', action = act.TogglePaneZoomState },
     { key = '\\', mods = 'SUPER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
