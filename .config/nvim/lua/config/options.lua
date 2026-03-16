@@ -1,5 +1,6 @@
 -- leader key
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
 -- file
 vim.opt.backup = true
