@@ -1,11 +1,3 @@
-# zsh-autosuggestions
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
-
-# k8s補完
-autoload -Uz compinit
-compinit
-[[ /opt/homebrew/bin/kubectl ]] && source <(kubectl completion zsh)
-
 # gitリポジトリ検索
 fdr() {
   local selected="$(ghq list | fzf)"
