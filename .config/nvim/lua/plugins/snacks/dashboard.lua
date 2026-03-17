@@ -14,7 +14,7 @@ return {
 	autokeys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
 	preset = {
 		keys = {
-			{ icon = "", desc = "New file", key = "e", action = ":enew" },
+			{ icon = "", desc = "New file", key = "n", action = ":enew" },
 			{ icon = "󰒲", desc = "Lazy", key = "z", action = ":Lazy" },
 			{ icon = "", desc = "Restore Session", key = "s", section = "session" },
 			{ icon = "󰅚", desc = "Quit", key = "q", action = ":qa" },
