@@ -7,6 +7,7 @@ return {
     { key = 'Tab', mods = 'SHIFT|CTRL', action = act.ActivateTabRelative(-1) },
     { key = '+', mods = 'SUPER', action = act.IncreaseFontSize },
     { key = '-', mods = 'SUPER', action = act.DecreaseFontSize },
+    { key = '0', mods = 'SUPER', action = act.ResetFontSize },
     { key = 'c', mods = 'SUPER', action = act.CopyTo 'Clipboard' },
     { key = 'f', mods = 'SUPER', action = act.Search 'CurrentSelectionOrEmptyString' },
     { key = 'l', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
