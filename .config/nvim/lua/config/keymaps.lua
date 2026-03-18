@@ -1,3 +1,6 @@
+-- clipboard copy
+vim.keymap.set({ 'n', 'i', 'v', 'x' }, '<leader>y', '"+y', { desc = 'MacOS copy' })
+
 -- split window
 vim.keymap.set('n', '<Leader>s', ':<C-u>sp\n', { noremap = true })
 vim.keymap.set('n', '<Leader>v', ':<C-u>vs\n', { noremap = true })
