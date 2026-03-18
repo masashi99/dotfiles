@@ -12,6 +12,9 @@ return {
         ["cmp.entry.get_documentation"] = true,
       },
     },
+    notify = {
+      view = "mini",
+    },
     presets = {
       long_message_to_split = true,
       inc_rename = false,
