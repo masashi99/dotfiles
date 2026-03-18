@@ -25,6 +25,15 @@ return {
 			desc = "Dashboard",
 		},
     -- Dashboard ]]
+		-- Explorer [[
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Explorer"
+		},	
+		-- Explorer ]]
 		-- Picker [[
 		{
 			",<cr>",
@@ -70,6 +79,13 @@ return {
 				Snacks.picker.buffers()
 			end,
 			desc = "Buffers",
+		},
+    {
+			",C",
+			function()
+				Snacks.picker.colorschemes()
+			end,
+			desc = "Colorscheme",
 		},
     {
 			",f",
@@ -212,11 +228,14 @@ return {
           truncate = 400,
         },
       },
+			hidden = true,
     },
     bigfile = { enabled = true },
     dashboard = require('plugins.snacks.dashboard'),
     lazygit = { enabled = true },
-    explorer = { enabled = true },
+    explorer = {
+			enabled = true,
+		},
     indent = {
       enabled = true,
       animate = {
