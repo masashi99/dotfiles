@@ -122,7 +122,7 @@ return {
 			function()
 				Snacks.picker.lazy()
 			end,
-			desc = "Lazy",
+			desc = "Search plugin spec",
 		},
     {
 			",m",
@@ -143,7 +143,7 @@ return {
 			function()
 				Snacks.picker.qflist()
 			end,
-			desc = "qflist",
+			desc = "Quick fix list",
 		},
     {
 			",r",
