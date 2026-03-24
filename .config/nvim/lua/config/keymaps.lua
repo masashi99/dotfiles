@@ -22,7 +22,7 @@ vim.keymap.set('n', '<leader>t', '<cmd>tabe .<cr>', { silent = true })
 vim.keymap.set('n', '<leader>c', '<cmd>tabclose<cr>', { silent = true })
 
 -- terminal mode
-vim.keymap.set('n', '<leader>t', ':terminal<CR>')
+vim.keymap.set('n', '<leader>T', ':terminal<CR>')
 vim.keymap.set('t', '<C-k>', [[<C-\><C-n>]])
 
 -- command mode
