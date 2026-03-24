@@ -32,7 +32,7 @@ return {
 				Snacks.explorer()
 			end,
 			desc = "Explorer"
-		},	
+		},
 		-- Explorer ]]
 		-- Picker [[
 		{

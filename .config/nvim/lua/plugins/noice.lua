@@ -20,5 +20,10 @@ return {
       inc_rename = false,
       lsp_doc_border = false,
     },
+    views = {
+      mini = {
+        timeout = 5000,
+      },
+    },
   },
 }
