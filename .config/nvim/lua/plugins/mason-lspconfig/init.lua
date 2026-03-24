@@ -11,6 +11,7 @@ return {
     ensure_installed = {
       "lua_ls",
       "stylua",
+      "ts_ls",
     },
   },
   config = function(_, opts)
