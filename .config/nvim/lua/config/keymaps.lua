@@ -13,7 +13,6 @@ vim.keymap.set('n', '<Leader>h', '<C-w>h', { noremap = true, silent = true })
 
 -- close window
 vim.keymap.set('n', '<Leader>w', '<C-w>c', { noremap = true })
-vim.keymap.set('n', '<Leader>h', '<C-w>h', { noremap = true, silent = true })
 
 -- tab management
 vim.keymap.set('n', '<tab>', '<cmd>tabnext<cr>', { silent = true })
@@ -46,3 +45,4 @@ vim.keymap.set('x', 'p', 'P')
 -- indent in visual mode
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
+

@@ -67,7 +67,7 @@ return {
 			mode = { "n", "x" },
 		},
     {
-			",P",
+			",p",
 			function()
 				Snacks.picker.projects()
 			end,
@@ -229,6 +229,14 @@ return {
         },
       },
 			hidden = true,
+      sources = {
+        projects = {
+          dev = vim.fn.trim(vim.fn.system("ghq root")),
+          patterns = { ".git" },
+          recent = false,
+          max_depth = 4,
+        },
+      },
     },
     bigfile = { enabled = true },
     dashboard = require('plugins.snacks.dashboard'),
