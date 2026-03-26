@@ -12,6 +12,7 @@ return {
       "lua_ls",
       "stylua",
       "ts_ls",
+      "biome",
     },
   },
   config = function(_, opts)
