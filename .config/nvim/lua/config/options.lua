@@ -10,7 +10,7 @@ vim.opt.writebackup = true
 vim.opt.autoread = true
 vim.opt.hidden = true
 vim.opt.fenc = "utf-8"
-vim.opt.undofile = true
+-- vim.opt.undofile = true
 
 -- appearance
 vim.opt.number = true

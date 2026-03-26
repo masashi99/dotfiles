@@ -4,7 +4,7 @@ local mux = wezterm.mux
 
 config.automatically_reload_config = true
 config.color_scheme = 'tokyonight-storm'
--- config.font = wezterm.font 'HackGen Console NF'
+config.font = wezterm.font 'HackGen Console NF'
 config.font_size = 16
 config.window_background_opacity = 0.8
 config.macos_window_background_blur = 10

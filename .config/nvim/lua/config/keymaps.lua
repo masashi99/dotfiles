@@ -32,7 +32,7 @@ vim.keymap.set('c', '<C-e>', '<End>', { silent = false })
 -- delete without yank
 vim.keymap.set({ 'n', 'v' }, 'x', '"_x')
 -- delete to end of line without yank
-vim.keymap.set({ 'n', 'v' }, 'X', '"_d$') 
+vim.keymap.set({ 'n', 'v' }, 'X', '"_d$')
 -- close quickfix
 vim.keymap.set({ 'n', 'v' }, '<leader>x', vim.cmd.cclose)
 -- clear search highlight
@@ -40,9 +40,12 @@ vim.keymap.set('n', '<leader>q', '<cmd>nohlsearch<cr><esc>')
 -- redo by Uj
 vim.keymap.set('n', 'U', '<C-r>')
 -- {visual}p to put without yank to unnamed register https://github.com/Shougo/shougo-s-github/blob/21a3f500cdc2b37c8d184edbf640d9e17458358a/vim/rc/mappings.rc.vim#L190-L191
-vim.keymap.set('x', 'p', 'P') 
+vim.keymap.set('x', 'p', 'P')
 
 -- indent in visual mode
 vim.keymap.set('x', '<', '<gv')
 vim.keymap.set('x', '>', '>gv')
 
+vim.keymap.set('i', '<S-Tab>', '<C-d>', { noremap = true })
+vim.keymap.set('n', '<C-i>', '<C-i>')
+vim.keymap.set('n', '<D-a>', 'ggVG')
