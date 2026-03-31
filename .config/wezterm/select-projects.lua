@@ -78,7 +78,7 @@ local function apply_layout(window, pane, project_dir)
 
   root_pane:activate()
   window:perform_action(
-    act.SendString("\x01\x0b" .. "cd " .. shell_quote(project_dir) .. " && clear\n"),
+    act.SendString("\x01\x0b" .. "cd " .. shell_quote(project_dir) .. " && clear && nvim .\n"),
     root_pane
   )
 
@@ -110,7 +110,7 @@ return wezterm.action_callback(function(window, pane)
     act.InputSelector({
       title = "Select ghq project",
       choices = choices,
-      fuzzy = false,
+      fuzzy = true,
       description = "j/k or arrow keys to move, Enter = accept, / = filter",
       action = wezterm.action_callback(function(_, _, id, _)
         if id then

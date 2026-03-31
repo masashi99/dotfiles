@@ -1,9 +1,11 @@
+local show_on_startup = vim.fn.argc(-1) == 0
 
 ---@class snacks.dashboard.Config
 ---@field enabled? boolean
 ---@field sections snacks.dashboard.Section
 ---@field formats table<string, snacks.dashboard.Text|fun(item:snacks.dashboard.Item, ctx:snacks.dashboard.Format.ctx):snacks.dashboard.Text>
 return {
+	enabled = show_on_startup,
 	sections = {
 		{ section = "header" },
 		{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
