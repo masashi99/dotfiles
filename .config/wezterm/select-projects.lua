@@ -5,6 +5,10 @@ local function trim(s)
   return (s:gsub("^%s+", ""):gsub("%s+$", ""))
 end
 
+local function basename(path)
+  return path:match("([^/]+)$") or path
+end
+
 local function shell_quote(s)
   return "'" .. s:gsub("'", "'\\''") .. "'"
 end
@@ -65,6 +69,7 @@ local function apply_layout(window, pane, project_dir)
     return
   end
 
+  tab:set_title(basename(project_dir))
   tab:set_zoomed(false)
 
   local root_pane = pane

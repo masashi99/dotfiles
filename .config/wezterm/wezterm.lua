@@ -24,7 +24,8 @@ config.colors = {
 }
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-  local title = '  ' .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. '  '
+  local tab_title = tab.tab_title and #tab.tab_title > 0 and tab.tab_title or tab.active_pane.title
+  local title = '  ' .. wezterm.truncate_right(tab_title, max_width - 1) .. '  '
   local icon = tab.active_pane.is_zoomed and '🔎' or ''
   local tab_text = icon .. title 
 

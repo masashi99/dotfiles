@@ -33,6 +33,7 @@ return {
 
       window:perform_action(act.CloseCurrentPane{ confirm = false }, pane)
     end) },
+    { key = 'w', mods = 'SHIFT|SUPER', action = act.CloseCurrentTab{ confirm = false } },
     { key = 'x', mods = 'SHIFT|CTRL', action = act.ActivateCopyMode },
     { key = 'z', mods = 'SHIFT|CTRL', action = act.TogglePaneZoomState },
     { key = '\\', mods = 'SUPER', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
