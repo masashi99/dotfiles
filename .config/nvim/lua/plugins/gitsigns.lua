@@ -13,18 +13,19 @@ return {
 			current_line_blame = true,
 		},
     keys = {
-      {
+       {
         "<leader>gd",
         function()
-          require("gitsigns").diffthis()
+          if vim.wo.diff then
+            -- diff中ならOFF
+            vim.cmd("diffoff")
+            vim.cmd("close")
+          else
+            -- diffじゃなければON
+            require("gitsigns").diffthis()
+          end
         end,
-        desc = "diff this",
-        mode = { "n" },
-      },
-      {
-        "<leader>gD",
-        "<cmd>diffoff | close<CR>",
-        desc = "diff off and close window",
+        desc = "toggle diff",
         mode = { "n" },
       },
       {
