@@ -78,7 +78,7 @@ local function apply_layout(window, pane, project_dir)
 
   root_pane:activate()
   window:perform_action(
-    act.SendString("cd " .. shell_quote(project_dir) .. " && clear\n"),
+    act.SendString("\x01\x0b" .. "cd " .. shell_quote(project_dir) .. " && clear\n"),
     root_pane
   )
 
@@ -99,6 +99,8 @@ local function apply_layout(window, pane, project_dir)
     size = 0.34,
     cwd = project_dir,
   })
+
+  root_pane:activate()
 end
 
 return wezterm.action_callback(function(window, pane)
