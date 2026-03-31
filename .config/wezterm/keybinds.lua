@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
+local select_projects = require 'select-projects'
 
 return {
   keys = {
@@ -12,6 +13,7 @@ return {
     { key = 'f', mods = 'SUPER', action = act.Search 'CurrentSelectionOrEmptyString' },
     { key = 'l', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
     { key = 'n', mods = 'SUPER', action = act.SpawnWindow },
+    { key = 'p', mods = 'SUPER', action = select_projects },
     { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
     { key = 't', mods = 'SUPER', action = act.SpawnTab 'CurrentPaneDomain' },
     { key = 'v', mods = 'SUPER', action = act.PasteFrom('Clipboard') },
