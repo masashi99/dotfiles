@@ -15,12 +15,16 @@ config.adjust_window_size_when_changing_font_size = false
 config.window_frame = {
   active_titlebar_bg = '#2a3950'
 }
-config.show_new_tab_button_in_tab_bar = false 
+config.show_new_tab_button_in_tab_bar = false
 config.show_close_tab_button_in_tabs = false
 config.colors = {
   tab_bar = {
     inactive_tab_edge = 'none',
   },
+}
+config.inactive_pane_hsb = {
+  saturation = 0.8,
+  brightness = 0.6,
 }
 
 wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
