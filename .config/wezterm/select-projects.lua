@@ -9,10 +9,6 @@ local function basename(path)
   return path:match("([^/]+)$") or path
 end
 
-local function shell_quote(s)
-  return "'" .. s:gsub("'", "'\\''") .. "'"
-end
-
 local function get_ghq_command()
   local candidates = {
     "ghq",
@@ -81,15 +77,21 @@ local function apply_layout(window, pane, project_dir)
     end
   end
 
-  root_pane:activate()
-  window:perform_action(
-    act.SendString("\x01\x0b" .. "cd " .. shell_quote(project_dir) .. " && clear && nvim .\n"),
-    root_pane
-  )
+  local editor_pane = root_pane:split({
+    direction = "Left",
+    cwd = project_dir,
+  })
 
-  local center_top = root_pane:split({
+  window:perform_action(
+    act.SendString("nvim .\n"),
+    editor_pane
+  )
+  root_pane:activate()
+  window:perform_action(act.CloseCurrentPane({ confirm = false }), root_pane)
+
+  local center_top = editor_pane:split({
     direction = "Right",
-    size = 0.50,
+    size = 0.45,
     cwd = project_dir,
   })
 
@@ -101,11 +103,10 @@ local function apply_layout(window, pane, project_dir)
 
   center_top:split({
     direction = "Right",
-    size = 0.34,
+    size = 0.50,
     cwd = project_dir,
   })
-
-  root_pane:activate()
+  editor_pane:activate()
 end
 
 return wezterm.action_callback(function(window, pane)
