@@ -1899,6 +1899,14 @@
                         "vendor_id": 7848
                     },
                     "ignore": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 4,
+                        "vendor_id": 18003
+                    },
+                    "ignore": true
                 }
             ],
             "name": "vim",
