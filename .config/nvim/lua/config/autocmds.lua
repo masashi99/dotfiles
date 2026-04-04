@@ -12,3 +12,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold", "CursorHoldI", "TermC
 	end,
 })
 
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = "*",
+	callback = function()
+    vim.opt_local.fo:remove({ "c", "r", "o" })
+	end,
+	desc = "disable comment in newline",
+})

@@ -48,4 +48,4 @@ vim.keymap.set('x', '>', '>gv')
 
 vim.keymap.set('i', '<S-Tab>', '<C-d>', { noremap = true })
 vim.keymap.set('n', '<C-i>', '<C-i>')
-vim.keymap.set('n', '<D-a>', 'ggVG')
+
