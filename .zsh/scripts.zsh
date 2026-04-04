@@ -1,3 +1,5 @@
+eval "$(starship init zsh)"
+
 # gitリポジトリ検索
 fdr() {
   local selected="$(ghq list | fzf)"
@@ -60,4 +62,30 @@ ghcr() {
   fi
 }
 
-eval "$(starship init zsh)"
+# 実行に成功したコマンドのみ履歴に保存
+autoload -Uz add-zsh-hook
+
+typeset -g __last_history_command=""
+
+zshaddhistory() {
+  __last_history_command="${1%$'\n'}"
+
+  if [[ -o hist_ignore_space && "$__last_history_command" == [[:space:]]* ]]; then
+    __last_history_command=""
+  fi
+
+  # いったん通常の履歴保存を止め、precmd で成功時だけ手動追加する
+  return 1
+}
+
+add_successful_history() {
+  local exit_status=$?
+
+  if (( exit_status == 0 )) && [[ -n "$__last_history_command" ]]; then
+    print -sr -- "$__last_history_command"
+  fi
+
+  __last_history_command=""
+}
+
+add-zsh-hook precmd add_successful_history
