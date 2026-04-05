@@ -236,6 +236,20 @@ return {
           recent = false,
           max_depth = 4,
         },
+        explorer = {
+          win = {
+            input = {
+              keys = {
+                ["<Esc>"] = false,
+              },
+            },
+            list = {
+              keys = {
+                ["<Esc>"] = false,
+              },
+            },
+          },
+        },
       },
     },
     bigfile = { enabled = true },
