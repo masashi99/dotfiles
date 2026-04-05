@@ -31,10 +31,25 @@ return {
       {
         "<leader>gr",
         function()
-          require("gitsigns").reset_hunk()
+          local gitsigns = require("gitsigns")
+
+          if vim.fn.mode() == "v" or vim.fn.mode() == "V" then
+            local start_line = vim.fn.line("v")
+            local end_line = vim.fn.line(".")
+
+            if start_line > end_line then
+              start_line, end_line = end_line, start_line
+            end
+
+            gitsigns.reset_hunk({ start_line, end_line })
+            vim.cmd("normal! <Esc>")
+            return
+          end
+
+          gitsigns.reset_hunk()
         end,
         desc = "reset hunk",
-        mode = { "n" },
+        mode = { "n", "v" },
       },
       {
         "<leader>gR",
