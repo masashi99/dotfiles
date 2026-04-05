@@ -89,24 +89,24 @@ local function apply_layout(window, pane, project_dir)
   root_pane:activate()
   window:perform_action(act.CloseCurrentPane({ confirm = false }), root_pane)
 
-  local center_top = editor_pane:split({
+  local center = editor_pane:split({
     direction = "Right",
     size = 0.45,
     cwd = project_dir,
   })
 
-  center_top:split({
-    direction = "Bottom",
-    size = 0.50,
-    cwd = project_dir,
-  })
-
-  center_top:split({
+  local right = center:split({
     direction = "Right",
     size = 0.50,
     cwd = project_dir,
   })
   editor_pane:activate()
+
+  right:split({
+    direction = "Bottom",
+    size = 0.50,
+    cwd = project_dir,
+  })
 end
 
 return wezterm.action_callback(function(window, pane)

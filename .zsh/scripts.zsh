@@ -62,15 +62,30 @@ ghcr() {
   fi
 }
 
+# Ctrl+R の履歴検索に実行時刻を表示
+# fzf-history-widget() {
+#   local selected history_number
+#
+#   selected="$(fc -rli 1 | fzf --query="$LBUFFER")" || return
+#   history_number="$(awk '{print $1; exit}' <<<"$selected")"
+#   zle vi-fetch-history -n "$history_number"
+#   zle reset-prompt
+# }
+# zle -N fzf-history-widget
+# bindkey '^R' fzf-history-widget
+
 # 実行に成功したコマンドのみ履歴に保存
 autoload -Uz add-zsh-hook
 
 typeset -g __last_history_command=""
+typeset -g HISTORY_IGNORE='(ls|ll|pwd|exit)'
 
 zshaddhistory() {
   __last_history_command="${1%$'\n'}"
 
   if [[ -o hist_ignore_space && "$__last_history_command" == [[:space:]]* ]]; then
+    __last_history_command=""
+  elif [[ -n "$HISTORY_IGNORE" && "$__last_history_command" == ${~HISTORY_IGNORE} ]]; then
     __last_history_command=""
   fi
 

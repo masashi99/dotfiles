@@ -13,11 +13,14 @@ return {
     { key = 'f', mods = 'SUPER', action = act.Search 'CurrentSelectionOrEmptyString' },
     { key = 'l', mods = 'SHIFT|CTRL', action = act.ShowDebugOverlay },
     { key = 'n', mods = 'SUPER', action = act.SpawnWindow },
+    { key = 'm', mods = 'SUPER', action = act.PaneSelect { mode = 'SwapWithActiveKeepFocus' } },
     { key = 'p', mods = 'SUPER', action = select_projects },
     { key = 'p', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
+    { key = 's', mods = 'SUPER', action = act.ShowLauncherArgs { flags = 'WORKSPACES' , title = "Select workspace" }},
     { key = 't', mods = 'SUPER', action = act.SpawnTab 'CurrentPaneDomain' },
     { key = 'v', mods = 'SUPER', action = act.PasteFrom('Clipboard') },
     { key = 'w', mods = 'SUPER', action = wezterm.action_callback(function(window, pane)
+      -- paneが一つの場合は無効にする
       local mux_window = window:mux_window()
       if not mux_window then
         return
