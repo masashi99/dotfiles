@@ -103,7 +103,7 @@ local function apply_layout(window, pane, project_dir)
   editor_pane:activate()
 
   right:split({
-    direction = "Bottom",
+    direction = "Top",
     size = 0.50,
     cwd = project_dir,
   })
