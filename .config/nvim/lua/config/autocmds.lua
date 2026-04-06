@@ -12,6 +12,16 @@ vim.api.nvim_create_autocmd({ "FocusGained", "CursorHold", "CursorHoldI", "TermC
 	end,
 })
 
+vim.api.nvim_create_autocmd("FileChangedShell", {
+	group = autoread_group,
+	desc = "Always reload files changed outside of Neovim without prompting",
+	callback = function()
+		if vim.v.fcs_reason ~= "deleted" then
+			vim.v.fcs_choice = "reload"
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "*",
 	callback = function()
