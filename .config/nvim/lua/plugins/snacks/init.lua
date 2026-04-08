@@ -92,6 +92,7 @@ return {
 			function()
 				Snacks.picker.files({
 					hidden = true,
+          ignored = true,
 				})
 			end,
 			desc = "Find Files",
@@ -229,6 +230,7 @@ return {
         },
       },
 			hidden = true,
+      ignored = true,
       sources = {
         projects = {
           dev = vim.fn.trim(vim.fn.system("ghq root")),
