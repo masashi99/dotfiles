@@ -9,9 +9,17 @@ return {
 
     require("nvim-treesitter").install({
       "lua",
+      "html",
       "javascript",
+      "tsx",
       "typescript",
+      "astro",
       "go",
+      "markdown",
+      "markdown_inline",
+      "svelte",
+      "vue",
+      "xml",
       "yaml",
       "toml",
       "sql",
