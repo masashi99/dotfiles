@@ -1,5 +1,6 @@
 local restore_explorer = false
 local saved_explorer = false
+local cleanup_restored_picker_windows
 
 local function is_snacks_picker_buffer(buf)
 	if not vim.api.nvim_buf_is_valid(buf) then
@@ -31,6 +32,8 @@ local function pre_save()
 	for _, picker in ipairs(explorer_pickers()) do
 		picker:close()
 	end
+
+	cleanup_restored_picker_windows()
 end
 
 local function save_extra_data()
@@ -44,7 +47,7 @@ local function restore_extra_data(_, extra_data)
 	restore_explorer = ok and type(data) == "table" and data.explorer == true
 end
 
-local function cleanup_restored_picker_windows()
+function cleanup_restored_picker_windows()
 	local found = false
 
 	for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -69,6 +72,27 @@ local function post_restore()
 	end)
 end
 
+local function open_explorer_when_no_session()
+	if vim.fn.argc(-1) ~= 1 then
+		return
+	end
+
+	local arg = vim.fn.argv(0)
+	if arg == "" or vim.fn.isdirectory(arg) ~= 1 then
+		return
+	end
+
+	vim.schedule(function()
+		local buf = vim.api.nvim_get_current_buf()
+		local name = vim.api.nvim_buf_get_name(buf)
+		local picker = Snacks.explorer({ cwd = vim.fn.fnamemodify(arg, ":p") })
+
+		if picker and name ~= "" and vim.fn.isdirectory(name) == 1 then
+			Snacks.bufdelete.delete(buf)
+		end
+	end)
+end
+
 return {
 	"rmagatti/auto-session",
 	lazy = false,
@@ -86,6 +110,9 @@ return {
 		restore_extra_data = restore_extra_data,
 		post_restore_cmds = {
 			post_restore,
+		},
+		no_restore_cmds = {
+			open_explorer_when_no_session,
 		},
 	},
 }

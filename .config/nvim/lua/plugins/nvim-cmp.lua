@@ -8,6 +8,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "windwp/nvim-autopairs",
 
       -- LuaSnip
       "L3MON4D3/LuaSnip",
@@ -16,6 +17,7 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
       cmp.setup({
         snippet = {
@@ -68,6 +70,8 @@ return {
         }),
         matching = { disallow_symbol_nonprefix_matching = false },
       })
+
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
 }

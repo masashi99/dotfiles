@@ -10,6 +10,18 @@ vim.opt.writebackup = true
 vim.opt.autoread = true
 vim.opt.hidden = true
 vim.opt.fenc = "utf-8"
+vim.opt.sessionoptions = {
+	"blank",
+	"buffers",
+	"curdir",
+	"folds",
+	"help",
+	"tabpages",
+	"winsize",
+	"winpos",
+	"terminal",
+	"localoptions",
+}
 -- vim.opt.undofile = true
 
 -- appearance
