@@ -20,6 +20,10 @@ vim.keymap.set('n', '<s-tab>', '<cmd>tabprevious<cr>', { silent = true })
 vim.keymap.set('n', '<leader>t', '<cmd>tabe .<cr>', { silent = true })
 vim.keymap.set('n', '<leader>c', '<cmd>tabclose<cr>', { silent = true })
 
+vim.keymap.set('n', '<C-h>', '<cmd>bprev<CR>')
+vim.keymap.set('n', '<C-l>', '<cmd>bnext<CR>')
+vim.keymap.set('n', '<C-w>', '<cmd>bd<CR>')
+
 -- terminal mode
 vim.keymap.set('n', '<leader>T', ':terminal<CR>')
 vim.keymap.set('t', '<C-k>', [[<C-\><C-n>]])
@@ -48,4 +52,3 @@ vim.keymap.set('x', '>', '>gv')
 
 vim.keymap.set('i', '<S-Tab>', '<C-d>', { noremap = true })
 vim.keymap.set('n', '<C-i>', '<C-i>')
-
