@@ -17,13 +17,13 @@ return {
   end,
   keys = {
     -- Dashboard [[
-    {
-			"<leader>d",
-			function()
-				Snacks.dashboard()
-			end,
-			desc = "Dashboard",
-		},
+		--   {
+		-- 	"<leader>d",
+		-- 	function()
+		-- 		Snacks.dashboard()
+		-- 	end,
+		-- 	desc = "Dashboard",
+		-- },
     -- Dashboard ]]
 		-- Explorer [[
 		{

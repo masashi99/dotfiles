@@ -22,7 +22,7 @@ vim.keymap.set('n', '<leader>c', '<cmd>tabclose<cr>', { silent = true })
 
 vim.keymap.set('n', '<C-h>', '<cmd>bprev<CR>')
 vim.keymap.set('n', '<C-l>', '<cmd>bnext<CR>')
-vim.keymap.set('n', '<C-w>', '<cmd>bd<CR>')
+vim.keymap.set('n', '<leader>d', '<cmd>Bdelete<CR>')
 
 -- terminal mode
 vim.keymap.set('n', '<leader>T', ':terminal<CR>')
