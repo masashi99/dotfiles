@@ -259,7 +259,7 @@ return {
     lazygit = { enabled = true },
     explorer = {
 			enabled = true,
-			replace_netrw = false,
+			replace_netrw = true,
 		},
     indent = {
       enabled = true,
