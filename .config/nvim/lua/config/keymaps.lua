@@ -52,3 +52,7 @@ vim.keymap.set('x', '>', '>gv')
 
 vim.keymap.set('i', '<S-Tab>', '<C-d>', { noremap = true })
 vim.keymap.set('n', '<C-i>', '<C-i>')
+
+-- rename
+vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
+
