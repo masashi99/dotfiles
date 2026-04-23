@@ -15,6 +15,9 @@ return {
       "ts_ls",
       "biome",
     },
+    automatic_enable = {
+      exclude = { "stylua" },
+    },
   },
   config = function(_, opts)
     require("mason-lspconfig").setup(opts)

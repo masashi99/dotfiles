@@ -8,14 +8,5 @@ return {
 		git_use_branch_name = false,
 		close_unsupported_windows = true,
 		bypass_save_filetypes = { "snacks_dashboard" },
-		post_restore_cmds = {
-			function()
-				vim.schedule(function()
-					if package.loaded["snacks"] then
-						Snacks.explorer.open()
-					end
-				end)
-			end,
-		},
 	},
 }

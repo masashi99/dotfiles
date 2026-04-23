@@ -7,6 +7,9 @@ vim.lsp.config("*", {
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
+      format = {
+        enable = false,
+      },
       runtime = {
         version = "LuaJIT",
       },
