@@ -20,6 +20,12 @@ return {
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
       cmp.setup({
+        completion = {
+          autocomplete = { cmp.TriggerEvent.TextChanged },
+          completeopt = "menu,menuone,noselect",
+          keyword_length = 1,
+        },
+
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
