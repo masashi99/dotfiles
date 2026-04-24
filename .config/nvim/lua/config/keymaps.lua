@@ -55,4 +55,10 @@ vim.keymap.set('n', '<C-i>', '<C-i>')
 
 -- rename
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>u', vim.lsp.buf.hover, { desc = 'LSP hover' })
 
+-- inlay hint
+vim.keymap.set('n', '<leader>i', function()
+  local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+  vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
+end, { desc = 'Toggle inlay hints' })

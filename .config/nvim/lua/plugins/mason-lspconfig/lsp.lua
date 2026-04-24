@@ -22,6 +22,35 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+vim.lsp.config("ts_ls", {
+  settings = {
+    typescript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "literals",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+    javascript = {
+      inlayHints = {
+        includeInlayParameterNameHints = "literals",
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+      },
+    },
+  },
+})
+
 -- menuone: 候補が1つでもメューを出す
 -- noselect: メニューが出た際に自動で最初の候補を選択しない
 -- noinsert: 候補を選んだだけでバッファに挿入しない
