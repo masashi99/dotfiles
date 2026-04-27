@@ -54,6 +54,7 @@ vim.keymap.set('i', '<S-Tab>', '<C-d>', { noremap = true })
 vim.keymap.set('n', '<C-i>', '<C-i>')
 
 -- rename
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP definition' })
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
 vim.keymap.set('n', '<leader>u', vim.lsp.buf.hover, { desc = 'LSP hover' })
 

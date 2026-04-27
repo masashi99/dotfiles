@@ -62,6 +62,16 @@ ghcr() {
   fi
 }
 
+# Ctrl+R で fzf の履歴検索を開く直前に、別シェルで追加された履歴を取り込む
+fzf-history-widget-with-import() {
+  builtin fc -RI 2>/dev/null
+  zle fzf-history-widget
+}
+zle -N fzf-history-widget-with-import
+bindkey -M emacs '^R' fzf-history-widget-with-import
+bindkey -M vicmd '^R' fzf-history-widget-with-import
+bindkey -M viins '^R' fzf-history-widget-with-import
+
 # Ctrl+R の履歴検索に実行時刻を表示
 # fzf-history-widget() {
 #   local selected history_number
