@@ -3,4 +3,5 @@ karabiner_*.json
 gcloud
 private.zsh
 *.log
+node_modules
 
