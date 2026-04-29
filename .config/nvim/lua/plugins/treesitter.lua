@@ -72,6 +72,12 @@ return {
     vim.keymap.set({ "x", "o" }, "ip", function()
       select.select_textobject("@parameter.inner", "textobjects")
     end, { desc = "Select parameter inner" })
+    vim.keymap.set({ "x", "o" }, "aa", function()
+      select.select_textobject("@attribute.outer", "textobjects")
+    end, { desc = "Select attribute outer" })
+    vim.keymap.set({ "x", "o" }, "ia", function()
+      select.select_textobject("@attribute.inner", "textobjects")
+    end, { desc = "Select attribute inner" })
 
     vim.keymap.set({ "n", "x", "o" }, "]m", function()
       move.goto_next_start("@function.outer", "textobjects")
