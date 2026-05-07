@@ -91,7 +91,7 @@ return {
 			",f",
 			function()
 				Snacks.picker.files({
-					hidden = true,
+					hidden = false,
           ignored = true,
 				})
 			end,
@@ -233,6 +233,20 @@ return {
       ignored = true,
       exclude = { "node_modules", "**/node_modules/**" },
       sources = {
+        files = {
+          win = {
+            input = {
+              keys = {
+                ["H"] = { "toggle_hidden", mode = "n" },
+              },
+            },
+            list = {
+              keys = {
+                ["H"] = "toggle_hidden",
+              },
+            },
+          },
+        },
         projects = {
           dev = vim.fn.trim(vim.fn.system("ghq root")),
           patterns = { ".git" },
