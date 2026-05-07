@@ -231,6 +231,7 @@ return {
       },
 			hidden = true,
       ignored = true,
+      exclude = { "node_modules", "**/node_modules/**" },
       sources = {
         projects = {
           dev = vim.fn.trim(vim.fn.system("ghq root")),
