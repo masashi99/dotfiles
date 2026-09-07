@@ -91,8 +91,8 @@ return {
 			",f",
 			function()
 				Snacks.picker.files({
-					hidden = false,
-          ignored = true,
+					hidden = true,
+          ignored = false,
 				})
 			end,
 			desc = "Find Files",
